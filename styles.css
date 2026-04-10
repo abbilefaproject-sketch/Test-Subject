@@ -6,3 +6,9 @@ h1 {
     font-weight: bold;
     color: Cornflower Blue;
 }
+
+UL {
+    list-style-type: none;
+    background-color; aliceblue;
+    border: 1px solid black;
+}
