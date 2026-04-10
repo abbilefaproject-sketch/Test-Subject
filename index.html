@@ -3,179 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abbilefa</title>
+    <title>Abbilefa - Creative Studio</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Navigation -->
-    <nav>
+    <nav class="navbar">
         <div class="nav-container">
-            <a href="#home" class="logo" aria-label="Abbilefa Home">Abbilefa</a>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
+            <a href="#home" class="logo">Abbilefa</a>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
-            <div class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
-                <span></span>
-                <span></span>
-                <span></span>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
             </div>
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <div class="container">
-        <!-- Home Section -->
-        <section id="home">
-            <h1 class="section-title">Welcome to Abbilefa</h1>
+    <!-- Home Section -->
+    <section id="home" class="section active">
+        <div class="container">
             <div class="hero-content">
-                <p>Selamat datang di Project Abbilefa. Kami berkomitmen untuk menghadirkan karya kreatif terbaik yang menginspirasi dan memukau.</p>
+                <h1 class="hero-title">Welcome to <span>Abbilefa</span></h1>
+                <p class="hero-text">Kami menciptakan karya kreatif terbaik yang menginspirasi dunia. Dari desain hingga pengembangan, semua dalam satu studio.</p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">Lihat Proyek</a>
+                    <a href="#contact" class="btn btn-secondary">Hubungi Kami</a>
+                </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- About Section -->
-        <section id="about">
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
             <h2 class="section-title">About Us</h2>
-            <div class="about-text">
-                <p>Kami adalah tim kreatif yang berdedikasi untuk menciptakan desain dan proyek inovatif. Dengan pengalaman bertahun-tahun di bidang desain grafis dan pengembangan digital, kami siap mewujudkan ide-ide Anda menjadi kenyataan.</p>
-            </div>
-            
-            <article class="project-card" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2);">
-                <h3 style="color: var(--text-primary);">Abbilefa Members</h3>
-                <div class="canva-container">
-                    <div class="canva-embed">
-                        <iframe 
-                            loading="lazy" 
-                            src="https://www.canva.com/design/DAHFO32kgJ0/qMBon62EGPyNJruk1M4MDw/view?embed" 
-                            allowfullscreen="allowfullscreen" 
-                            allow="fullscreen">
-                        </iframe>
-                    </div>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>Kami adalah tim kreatif berpengalaman dengan passion di desain grafis, web development, dan content creation. Setiap proyek adalah karya seni yang dirancang khusus untuk klien kami.</p>
+                </div>
+                <div class="team-container">
+                    <iframe src="https://www.canva.com/design/DAHFO32kgJ0/qMBon62EGPyNJruk1M4MDw/view?embed" 
+                            allowfullscreen allow="fullscreen"></iframe>
                     <a href="https://www.canva.com/design/DAHFO32kgJ0/qMBon62EGPyNJruk1M4MDw/view?utm_content=DAHFO32kgJ0&utm_campaign=designshare&utm_medium=embeds&utm_source=link" 
-                       target="_blank" rel="noopener" class="canva-link">
-                        🔗 Buka Abbilefa di Canva
+                       target="_blank" class="canva-link">🔗 Lihat Tim di Canva</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title">Our Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-icon">📱</div>
+                    <h3>Mobile Apps</h3>
+                    <p>Aplikasi mobile responsif dengan UI/UX modern dan performa optimal.</p>
+                </div>
+                <div class="project-card">
+                    <div class="project-icon">💻</div>
+                    <h3>Websites</h3>
+                    <p>Website premium dengan animasi halus dan loading super cepat.</p>
+                </div>
+                <div class="project-card">
+                    <div class="project-icon">🎨</div>
+                    <h3>Branding</h3>
+                    <p>Logo, poster, dan identitas visual yang memorable dan profesional.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">Contact Person</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Abbilefa Team</h3>
+                    <p><strong>📧 Email:</strong> abbilefaproject@gmail.com</p>
+                </div>
+                <div class="whatsapp-grid">
+                    <a href="https://wa.me/6281385675718" class="whatsapp-card" target="_blank">
+                        <div class="whatsapp-icon">🎨</div>
+                        <div class="whatsapp-info">
+                            <strong>Graphic Designer</strong>
+                            <span>+62 813-8567-5718</span>
+                        </div>
+                    </a>
+                    <a href="https://wa.me/6283135341201" class="whatsapp-card" target="_blank">
+                        <div class="whatsapp-icon">✍️</div>
+                        <div class="whatsapp-info">
+                            <strong>Content Writer</strong>
+                            <span>+62 831-3534-1201</span>
+                        </div>
+                    </a>
+                    <a href="https://wa.me/6289519565824" class="whatsapp-card" target="_blank">
+                        <div class="whatsapp-icon">🌐</div>
+                        <div class="whatsapp-info">
+                            <strong>Web Developer</strong>
+                            <span>+62 895-1956-5824</span>
+                        </div>
+                    </a>
+                    <a href="https://wa.me/6282180031185" class="whatsapp-card" target="_blank">
+                        <div class="whatsapp-icon">💻</div>
+                        <div class="whatsapp-info">
+                            <strong>Programmer</strong>
+                            <span>+62 821-8003-1185</span>
+                        </div>
                     </a>
                 </div>
-            </article>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects">
-            <h2 class="section-title">Projects</h2>
-            <div class="project-card">
-                <h3>📱 Proyek Mobile</h3>
-                <p>Website responsif yang dioptimalkan untuk semua perangkat. Desain modern dengan animasi halus dan performa tinggi.</p>
             </div>
-            <div class="project-card">
-                <h3>💻 Proyek Web</h3>
-                <p>Portfolio lengkap dengan navigasi smooth scrolling dan efek visual modern untuk pengalaman pengguna terbaik.</p>
-            </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Contact Section -->
-        <section id="contact">
-            <h2 class="section-title">Contact Person</h2>
-            <div class="contact-info">
-                <h3>Abbilefa Team</h3>
-                <p><strong>📧 Email:</strong> abbilefaproject@gmail.com</p>
-                
-                <div class="whatsapp-grid">
-                    <!-- WhatsApp Card 1 -->
-                    <div class="whatsapp-card">
-                        <div class="whatsapp-icon">🎨</div>
-                        <div class="whatsapp-text">
-                            <strong>Graphic Designer</strong><br>
-                            <small>+62 813-8567-5718</small>
-                        </div>
-                        <a href="https://wa.me/6281385675718" target="_blank" rel="noopener" class="whatsapp-link" aria-label="Chat dengan Graphic Designer">💬 Chat</a>
-                    </div>
-
-                    <!-- WhatsApp Card 2 -->
-                    <div class="whatsapp-card">
-                        <div class="whatsapp-icon">✍️</div>
-                        <div class="whatsapp-text">
-                            <strong>Content Writer</strong><br>
-                            <small>+62 831-3534-1201</small>
-                        </div>
-                        <a href="https://wa.me/6283135341201" target="_blank" rel="noopener" class="whatsapp-link" aria-label="Chat dengan Content Writer">💬 Chat</a>
-                    </div>
-
-                    <!-- WhatsApp Card 3 -->
-                    <div class="whatsapp-card">
-                        <div class="whatsapp-icon">🌐</div>
-                        <div class="whatsapp-text">
-                            <strong>Web Developer</strong><br>
-                            <small>+62 895-1956-5824</small>
-                        </div>
-                        <a href="https://wa.me/6289519565824" target="_blank" rel="noopener" class="whatsapp-link" aria-label="Chat dengan Web Developer">💬 Chat</a>
-                    </div>
-
-                    <!-- WhatsApp Card 4 -->
-                    <div class="whatsapp-card">
-                        <div class="whatsapp-icon">💻</div>
-                        <div class="whatsapp-text">
-                            <strong>Programmer</strong><br>
-                            <small>+62 821-8003-1185</small>
-                        </div>
-                        <a href="https://wa.me/6282180031185" target="_blank" rel="noopener" class="whatsapp-link" aria-label="Chat dengan Programmer">💬 Chat</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <script>
-        // Mobile Menu Toggle
-        const menuToggle = document.getElementById('menuToggle');
-        const navLinks = document.getElementById('navLinks');
-
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-            });
-        });
-
-        // WhatsApp Cards Animation on Scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry, index) => {
-                if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        entry.target.classList.add('animate');
-                    }, index * 100);
-                }
-            });
-        }, observerOptions);
-
-        // Observe all WhatsApp cards
-        document.querySelectorAll('.whatsapp-card').forEach(card => {
-            observer.observe(card);
-        });
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
