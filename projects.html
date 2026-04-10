@@ -1,0 +1,52 @@
+ <!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Projects</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+    <div class="nav-container">
+        <div class="logo">Abbilefa</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <h2>Projects</h2>
+
+    <div class="grid">
+        <div class="card">
+            <h3>Website Modern</h3>
+            <p>Desain clean dan responsif.</p>
+        </div>
+
+        <div class="card">
+            <h3>UI Design</h3>
+            <p>Interface minimalis dan elegan.</p>
+        </div>
+    </div>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".card, .hero").forEach(el => {
+        el.style.opacity = 0;
+        el.style.transform = "translateY(40px)";
+        
+        setTimeout(() => {
+            el.style.transition = "0.8s ease";
+            el.style.opacity = 1;
+            el.style.transform = "translateY(0)";
+        }, 200);
+    });
+});
+</script>
+</body>
+</html>
