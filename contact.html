@@ -1,48 +1,154 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<title>Contact</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abbilefa Project - Contact Us</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .staff-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .staff-card {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .staff-photo-placeholder {
+            width: 120px;
+            height: 120px;
+            background-color: #333;
+            border-radius: 50%;
+            margin-bottom: 1.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 3rem;
+            color: var(--text-muted);
+            border: 3px solid var(--card-bg-color);
+            box-shadow: var(--shadow);
+        }
+        .staff-name {
+            font-size: 1.3rem;
+            color: var(--accent-color);
+            margin-bottom: 0.3rem;
+        }
+        .staff-role {
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+        .staff-description {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+        .staff-contact-links {
+            display: flex;
+            gap: 15px;
+        }
+        .staff-contact-icon {
+            font-size: 1.3rem;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .staff-contact-icon:hover {
+            color: var(--accent-color);
+        }
+    </style>
 </head>
 <body>
 
-<nav>
-    <div class="nav-container">
-        <div class="logo">Abbilefa</div>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="contact.html">Contact</a></li>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="index.html" class="navbar-brand">Abbilefa Project</a>
+        <ul class="navbar-nav">
+            <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="about.html" class="nav-link">About Us</a></li>
+            <li class="nav-item"><a href="project.html" class="nav-link">Project</a></li>
+            <li class="nav-item"><a href="contact.html" class="nav-link active">Contact Us</a></li>
         </ul>
-    </div>
-</nav>
+    </nav>
 
-<div class="container">
-    <div class="card contact-box">
-        <h2>Contact</h2>
-        <p>Email: abbilefaproject@gmail.com</p>
-
-        <a href="https://wa.me/6281385675718">Graphic Designer</a>
-        <a href="https://wa.me/6283135341201">Content Writer</a>
-        <a href="https://wa.me/6289519565824">Web Developer</a>
-        <a href="https://wa.me/6282180031185">Programmer</a>
-    </div>
-</div>
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll(".card, .hero").forEach(el => {
-        el.style.opacity = 0;
-        el.style.transform = "translateY(40px)";
+    <!-- Kontainer Hubungi Kami -->
+    <div class="container">
         
-        setTimeout(() => {
-            el.style.transition = "0.8s ease";
-            el.style.opacity = 1;
-            el.style.transform = "translateY(0)";
-        }, 200);
-    });
-});
-</script>
+        <header class="page-header">
+            <h1 class="page-title">Hubungi Tim Kami</h1>
+            <p class="page-subtitle">Berkolaborasi dengan Ahli untuk Mewujudkan Visi Anda.</p>
+        </header>
+
+        <div class="staff-grid">
+            
+            <!-- 1. Web Developer -->
+            <div class="ui-card staff-card">
+                <div class="staff-photo-placeholder">&#128187;</div>
+                <h3 class="staff-name">Andi Prasetyo</h3>
+                <p class="staff-role">Web Developer</p>
+                <p class="staff-description">Membangun situs web modern dengan desain responsif dan performa tinggi.</p>
+                <div class="staff-contact-links">
+                    <a href="mailto:andi@abbilefa.com" class="staff-contact-icon" title="Email">&#9993;</a>
+                    <a href="#" class="staff-contact-icon" title="LinkedIn">&#128100;</a>
+                    <a href="#" class="staff-contact-icon" title="Portfolio">&#128196;</a>
+                </div>
+            </div>
+
+            <!-- 2. Programmer -->
+            <div class="ui-card staff-card">
+                <div class="staff-photo-placeholder">&#128295;</div>
+                <h3 class="staff-name">Siti Nurhaliza</h3>
+                <p class="staff-role">Programmer</p>
+                <p class="staff-description">Mendesain dan mengembangkan algoritma canggih untuk solusi perangkat lunak.</p>
+                <div class="staff-contact-links">
+                    <a href="mailto:siti@abbilefa.com" class="staff-contact-icon" title="Email">&#9993;</a>
+                    <a href="#" class="staff-contact-icon" title="LinkedIn">&#128100;</a>
+                    <a href="#" class="staff-contact-icon" title="Portfolio">&#128196;</a>
+                </div>
+            </div>
+
+            <!-- 3. Graphic Designer -->
+            <div class="ui-card staff-card">
+                <div class="staff-photo-placeholder">&#127912;</div>
+                <h3 class="staff-name">Rendi Gunawan</h3>
+                <p class="staff-role">Graphic Designer</p>
+                <p class="staff-description">Membuat identitas visual yang menonjol dan komunikatif untuk merek Anda.</p>
+                <div class="staff-contact-links">
+                    <a href="mailto:rendi@abbilefa.com" class="staff-contact-icon" title="Email">&#9993;</a>
+                    <a href="#" class="staff-contact-icon" title="LinkedIn">&#128100;</a>
+                    <a href="#" class="staff-contact-icon" title="Portfolio">&#128196;</a>
+                </div>
+            </div>
+
+            <!-- 4. Content Writer -->
+            <div class="ui-card staff-card">
+                <div class="staff-photo-placeholder">&#9997;</div>
+                <h3 class="staff-name">Alya Fakhri</h3>
+                <p class="staff-role">Content Writer</p>
+                <p class="staff-description">Menyusun konten yang menarik, informatif, dan dioptimalkan untuk SEO.</p>
+                <div class="staff-contact-links">
+                    <a href="mailto:alya@abbilefa.com" class="staff-contact-icon" title="Email">&#9993;</a>
+                    <a href="#" class="staff-contact-icon" title="LinkedIn">&#128100;</a>
+                    <a href="#" class="staff-contact-icon" title="Portfolio">&#128196;</a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <footer class="footer">
+        &copy; 2026 Abbilefa Project. Hak Cipta Dilindungi.
+    </footer>
+
 </body>
 </html>
