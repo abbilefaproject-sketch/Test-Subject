@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abbilefa Project - Project</title>
+    <title>Abbilefa Project - Project Sekolah</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -62,12 +62,26 @@
         }
 
         .difficulty-section {
-            color: var(--text-muted);
+            color: var(--text-color);
             margin-bottom: 1.5rem;
+            user-select: none;
         }
+        
+        /* CSS Baru untuk Interaksi Bintang */
         .difficulty-stars {
-            color: #444;
-            font-size: 1.2rem;
+            display: inline-flex;
+            gap: 5px;
+            margin-left: 10px;
+            font-size: 1.4rem;
+            vertical-align: middle;
+        }
+        .star {
+            cursor: pointer;
+            color: #444; /* Warna bintang mati */
+            transition: color 0.2s ease, transform 0.1s ease;
+        }
+        .star:hover {
+            transform: scale(1.2);
         }
 
         .task-filters {
@@ -105,7 +119,6 @@
 </head>
 <body>
 
-    <!-- Navbar -->
     <nav class="navbar">
         <a href="index.html" class="navbar-brand">Abbilefa Project</a>
         <ul class="navbar-nav">
@@ -116,20 +129,18 @@
         </ul>
     </nav>
 
-    <!-- Kontainer Project -->
     <div class="container">
         
         <header class="page-header">
-            <h1 class="page-title">Sistem Manajemen Project</h1>
-            <p class="page-subtitle">Pantau dan kelola seluruh perkembangan lini kerja proyek Anda di sini.</p>
+            <h1 class="page-title">Sistem Manajemen Project & Tugas</h1>
+            <p class="page-subtitle">Pantau alur pengerjaan tugas sekolah dan proyek belajar Anda di sini.</p>
         </header>
 
-        <!-- Tampilan UI Berdasarkan Desain image_efe6c7.png -->
         <div class="ui-card">
             
             <div class="task-stats">
                 <div class="ui-card stat-card">
-                    <div class="stat-label">Total Project</div>
+                    <div class="stat-label">Total Tugas</div>
                     <div class="stat-value">0</div>
                 </div>
                 <div class="ui-card stat-card">
@@ -145,24 +156,41 @@
             <div class="ui-divider"></div>
 
             <div class="task-input-section">
-                <input type="text" class="task-input" placeholder="Judul project...">
+                <input type="text" class="task-input" placeholder="Judul tugas / project...">
                 <input type="date" class="task-input" style="color-scheme: dark;">
+                
                 <select class="task-input category-select">
-                    <option value="Web-Dev" selected>Web Development</option>
-                    <option value="Design">Graphic Design</option>
-                    <option value="Writing">Content Writing</option>
+                    <option value="Matematika" selected>Matematika</option>
+                    <option value="Fisika">Fisika</option>
+                    <option value="Kimia">Kimia</option>
+                    <option value="Biologi">Biologi</option>
+                    <option value="Sejarah">Sejarah</option>
+                    <option value="Ekonomi">Ekonomi</option>
+                    <option value="Geografi">Geografi</option>
+                    <option value="Sosiologi">Sosiologi</option>
+                    <option value="Bahasa-Indonesia">Bahasa Indonesia</option>
+                    <option value="Bahasa-Inggris">Bahasa Inggris</option>
+                    <option value="Seni-Rupa">Seni Rupa</option>
+                    <option value="Informatika">Informatika</option>
+                    <option value="PPkn">PPkn</option>
+                    <option value="Agama">Agama</option>
+                    <option value="Olahraga">Olahraga</option>
                 </select>
             </div>
 
             <div class="difficulty-section">
                 Tingkat kesulitan:
                 <span class="difficulty-stars">
-                    &#9734; &#9734; &#9734; &#9734; &#9734;
+                    <span class="star" data-value="1">&#9734;</span>
+                    <span class="star" data-value="2">&#9734;</span>
+                    <span class="star" data-value="3">&#9734;</span>
+                    <span class="star" data-value="4">&#9734;</span>
+                    <span class="star" data-value="5">&#9734;</span>
                 </span>
-                <span style="font-size: 0.9rem; margin-left: 10px;">Pilih bintang</span>
+                <span id="rating-text" style="font-size: 0.9rem; margin-left: 10px; color: var(--text-muted);">Pilih bintang</span>
             </div>
 
-            <button class="btn" style="width: 100%; text-align: center; color: var(--text-color);">+ Tambah Project</button>
+            <button class="btn" style="width: 100%; text-align: center; color: var(--text-color);">+ Tambah Tugas</button>
             <div style="height: 1.5rem;"></div>
 
             <div class="task-filters">
@@ -175,7 +203,7 @@
 
             <div class="task-list-empty">
                 <div class="empty-icon">&#128198;</div>
-                <div>Tidak ada alur project saat ini</div>
+                <div>Tidak ada alur tugas saat ini</div>
             </div>
 
         </div>
@@ -185,6 +213,47 @@
     <footer class="footer">
         &copy; 2026 Abbilefa Project. Hak Cipta Dilindungi.
     </footer>
+
+    <script>
+        const stars = document.querySelectorAll('.star');
+        const ratingText = document.getElementById('rating-text');
+        let selectedRating = 0;
+
+        stars.forEach(star => {
+            // Ketika kursor masuk ke area bintang (Hover)
+            star.addEventListener('mouseover', () => {
+                const currentHoverValue = star.getAttribute('data-value');
+                highlightStars(currentHoverValue);
+            });
+
+            // Ketika kursor keluar dari area bintang
+            star.addEventListener('mouseleave', () => {
+                highlightStars(selectedRating);
+            });
+
+            // Ketika bintang diklik
+            star.addEventListener('click', () => {
+                selectedRating = star.getAttribute('data-value');
+                ratingText.textContent = `Tingkat kesulitan: ${selectedRating} Bintang`;
+                ratingText.style.color = '#ffb300'; // Mengubah teks menjadi warna emas saat dipilih
+                highlightStars(selectedRating);
+            });
+        });
+
+        // Fungsi internal untuk mengubah visual bintang
+        function highlightStars(rating) {
+            stars.forEach(star => {
+                const starValue = star.getAttribute('data-value');
+                if (starValue <= rating) {
+                    star.innerHTML = '&#9733;'; // Mengubah karakter jadi bintang penuh (★)
+                    star.style.color = '#ffb300'; // Warna emas terang modern
+                } else {
+                    star.innerHTML = '&#9734;'; // Mengubah karakter jadi bintang kosong (☆)
+                    star.style.color = '#444';    // Kembali ke warna abu-abu gelap tema dark
+                }
+            });
+        }
+    </script>
 
 </body>
 </html>
