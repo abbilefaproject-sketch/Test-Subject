@@ -1,131 +1,86 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Abbilefa — About Us</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="about.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abbilefa Project - About Us</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* CSS Tambahan untuk Canva Embed */
+        .canva-embed-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-top: 56.2500%;
+            padding-bottom: 0;
+            box-shadow: var(--shadow);
+            margin-top: 1.6em;
+            margin-bottom: 0.9em;
+            overflow: hidden;
+            border-radius: var(--border-radius);
+            will-change: transform;
+        }
+        .canva-iframe {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            border: none;
+            padding: 0;
+            margin: 0;
+        }
+        .canva-link {
+            text-align: center;
+            display: block;
+            margin-top: 0.5rem;
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+        .canva-link:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
 
-  <nav class="navbar" id="navbar">
-    <a href="index.html" class="nav-logo">Abbi<span>.</span></a>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html" class="active">About Us</a></li>
-      <li><a href="product.html">Product</a></li>
-      <li><a href="contact.html">Contact Us</a></li>
-    </ul>
-    <a href="contact.html" class="btn btn-primary" style="font-size:13px;padding:9px 20px;">Hubungi Kami</a>
-  </nav>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="index.html" class="navbar-brand">Abbilefa Project</a>
+        <ul class="navbar-nav">
+            <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="about.html" class="nav-link active">About Us</a></li>
+            <li class="nav-item"><a href="product.html" class="nav-link">Product</a></li>
+            <li class="nav-item"><a href="contact.html" class="nav-link">Contact Us</a></li>
+        </ul>
+    </nav>
 
-  <div class="page">
+    <!-- Kontainer Tentang Kami -->
+    <div class="container">
+        
+        <header class="page-header">
+            <h1 class="page-title">Tentang Kami</h1>
+            <p class="page-subtitle">Perkenalan Visi dan Tim Kami melalui Canva</p>
+        </header>
 
-    <!-- HERO -->
-    <section class="about-hero section fade-up">
-      <div class="section-label">About Us</div>
-      <h1 class="about-title">Cerita di balik<br/><span class="accent-text">Abbilefa</span></h1>
-      <p class="about-desc">
-        Abbilefa Project lahir dari keresahan sederhana — terlalu banyak tugas, terlalu sedikit waktu, 
-        dan nggak ada satu tempat yang benar-benar enak buat ngatur semuanya. Jadi kami bikin sendiri.
-      </p>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- VALUES -->
-    <section class="section fade-up fade-up-d1">
-      <div class="section-label">Kenapa Abbilefa</div>
-      <h2 class="section-title">Dibangun untuk pelajar,<br/>bukan untuk korporat.</h2>
-
-      <div class="values-grid">
-        <div class="value-card card">
-          <div class="value-icon">🎯</div>
-          <h3>Fokus</h3>
-          <p>Tampilan yang bersih, minim distraksi. Kamu masuk, tambah tugas, selesai. Sesederhana itu.</p>
+        <!-- Bagian Embed Canva -->
+        <div class="ui-card">
+            <div class="canva-embed-container">
+                <iframe loading="lazy" class="canva-iframe"
+                  src="https://www.canva.com/design/DAHFO32kgJ0/qMBon62EGPyNJruk1M4MDw/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
+                </iframe>
+            </div>
+            <a href="https://[www.canva.com/design/DAHFO32kgJ0/qMBon62EGPyNJruk1M4MDw/view?utm_content=DAHFO32kgJ0&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link](https://www.canva.com/design/DAHFO32kgJ0/qMBon62EGPyNJruk1M4MDw/view?utm_content=DAHFO32kgJ0&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link)" target="_blank" rel="noopener" class="canva-link">Abbilefa by Abbilefa Project</a>
         </div>
-        <div class="value-card card">
-          <div class="value-icon">⚡</div>
-          <h3>Cepat</h3>
-          <p>Nggak perlu sign up, nggak perlu internet. Langsung buka, langsung pakai.</p>
-        </div>
-        <div class="value-card card">
-          <div class="value-icon">🎨</div>
-          <h3>Estetik</h3>
-          <p>Karena produktivitas harusnya juga terasa menyenangkan, bukan membebani.</p>
-        </div>
-        <div class="value-card card">
-          <div class="value-icon">🔒</div>
-          <h3>Privat</h3>
-          <p>Data kamu tersimpan di perangkatmu sendiri. Nggak ada server, nggak ada tracking.</p>
-        </div>
-      </div>
-    </section>
 
-    <div class="divider"></div>
-
-    <!-- CANVA EMBED -->
-    <section class="section canva-section fade-up fade-up-d2">
-      <div class="section-label">Perkenalan</div>
-      <h2 class="section-title">Kenali tim kami lebih dekat.</h2>
-      <p class="section-sub">Slide berikut dibuat langsung oleh tim Abbilefa — sebuah perkenalan singkat tentang siapa kami dan apa yang kami kerjakan.</p>
-
-      <div class="canva-wrap">
-        <div class="canva-label">
-          <span class="canva-dot"></span>
-          Presentasi Interaktif — Abbilefa Project
-        </div>
-        <div class="canva-frame-wrap">
-          <iframe
-            loading="lazy"
-            src="https://www.canva.com/design/DAHFO32kgJ0/qMBon62EGPyNJruk1M4MDw/view?embed"
-            allowfullscreen="allowfullscreen"
-            allow="fullscreen"
-            title="Abbilefa Project Presentation"
-          ></iframe>
-        </div>
-        <div class="canva-footer">
-          <span>Dibuat oleh Abbilefa Project</span>
-          <a href="https://www.canva.com/design/DAHFO32kgJ0/qMBon62EGPyNJruk1M4MDw/view?utm_content=DAHFO32kgJ0&utm_campaign=designshare&utm_medium=embeds&utm_source=link" target="_blank" rel="noopener" class="btn btn-ghost" style="font-size:12px;padding:7px 16px;">
-            Buka di Canva
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- CTA -->
-    <section class="section cta-section fade-up">
-      <div class="cta-box card">
-        <div class="cta-inner">
-          <h2>Mau kerja sama<br/>atau sekadar ngobrol?</h2>
-          <p>Kami terbuka untuk kolaborasi, masukan, atau cuma saling kenalan. Kunjungi halaman kontak kami.</p>
-          <a href="contact.html" class="btn btn-primary">
-            Hubungi Kami
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-        </div>
-        <div class="cta-deco">✦</div>
-      </div>
-    </section>
-
-    <div class="divider"></div>
+    </div>
 
     <footer class="footer">
-      <p class="footer-text">© 2026 <span>Abbilefa Project</span>. All rights reserved.</p>
-      <p class="footer-text" style="font-size:12px;">Made with intention.</p>
+        &copy; 2026 Abbilefa Project. Hak Cipta Dilindungi.
     </footer>
-  </div>
-
-  <script>
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 40);
-    });
-  </script>
 
 </body>
 </html>
