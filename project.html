@@ -67,7 +67,6 @@
             user-select: none;
         }
         
-        /* CSS Baru untuk Interaksi Bintang */
         .difficulty-stars {
             display: inline-flex;
             gap: 5px;
@@ -77,7 +76,7 @@
         }
         .star {
             cursor: pointer;
-            color: #444; /* Warna bintang mati */
+            color: #444;
             transition: color 0.2s ease, transform 0.1s ease;
         }
         .star:hover {
@@ -115,6 +114,99 @@
             color: #333;
             margin-bottom: 1rem;
         }
+
+        /* --- STYLE BARU UNTUK DAFTAR TUGAS AKTIF --- */
+        .task-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 1rem;
+        }
+        .task-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem;
+            background-color: #2b2b2b;
+            border-left: 5px solid var(--accent-color);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+        .task-item.completed {
+            border-left-color: #2ecc71;
+            opacity: 0.5;
+        }
+        .task-item.completed .task-item-title {
+            text-decoration: line-through;
+            color: var(--text-muted);
+        }
+        .task-item-info {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .task-item-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+        .task-item-meta {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .badge {
+            background-color: #444;
+            color: var(--accent-color);
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .badge-danger {
+            background-color: rgba(231, 76, 60, 0.2);
+            color: #e74c3c;
+            border: 1px solid #e74c3c;
+        }
+        .task-item-actions {
+            display: flex;
+            gap: 8px;
+        }
+        .action-btn {
+            padding: 0.5rem 0.9rem;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.85rem;
+            transition: background 0.2s;
+            font-family: var(--font-family);
+        }
+        .btn-complete {
+            background-color: #2ecc71;
+            color: #fff;
+        }
+        .btn-complete:hover {
+            background-color: #27ae60;
+        }
+        .btn-uncomplete {
+            background-color: #f1c40f;
+            color: #000;
+        }
+        .btn-uncomplete:hover {
+            background-color: #f39c12;
+        }
+        .btn-delete {
+            background-color: #e74c3c;
+            color: #fff;
+        }
+        .btn-delete:hover {
+            background-color: #c0392b;
+        }
     </style>
 </head>
 <body>
@@ -141,25 +233,25 @@
             <div class="task-stats">
                 <div class="ui-card stat-card">
                     <div class="stat-label">Total Tugas</div>
-                    <div class="stat-value">0</div>
+                    <div class="stat-value" id="stat-total">0</div>
                 </div>
                 <div class="ui-card stat-card">
                     <div class="stat-label">Selesai</div>
-                    <div class="stat-value">0</div>
+                    <div class="stat-value" id="stat-completed">0</div>
                 </div>
                 <div class="ui-card stat-card">
-                    <div class="stat-label">Mendekati Deadline</div>
-                    <div class="stat-value">0</div>
+                    <div class="stat-label">Mendekati Deadline / Lewat</div>
+                    <div class="stat-value" id="stat-urgent">0</div>
                 </div>
             </div>
 
             <div class="ui-divider"></div>
 
             <div class="task-input-section">
-                <input type="text" class="task-input" placeholder="Judul tugas / project...">
-                <input type="date" class="task-input" style="color-scheme: dark;">
+                <input type="text" id="task-title" class="task-input" placeholder="Judul tugas / project...">
+                <input type="date" id="task-deadline" class="task-input" style="color-scheme: dark;">
                 
-                <select class="task-input category-select">
+                <select id="task-category" class="task-input category-select">
                     <option value="Matematika" selected>Matematika</option>
                     <option value="Fisika">Fisika</option>
                     <option value="Kimia">Kimia</option>
@@ -168,9 +260,9 @@
                     <option value="Ekonomi">Ekonomi</option>
                     <option value="Geografi">Geografi</option>
                     <option value="Sosiologi">Sosiologi</option>
-                    <option value="Bahasa-Indonesia">Bahasa Indonesia</option>
-                    <option value="Bahasa-Inggris">Bahasa Inggris</option>
-                    <option value="Seni-Rupa">Seni Rupa</option>
+                    <option value="Bahasa Indonesia">Bahasa Indonesia</option>
+                    <option value="Bahasa Inggris">Bahasa Inggris</option>
+                    <option value="Seni Rupa">Seni Rupa</option>
                     <option value="Informatika">Informatika</option>
                     <option value="PPkn">PPkn</option>
                     <option value="Agama">Agama</option>
@@ -190,21 +282,23 @@
                 <span id="rating-text" style="font-size: 0.9rem; margin-left: 10px; color: var(--text-muted);">Pilih bintang</span>
             </div>
 
-            <button class="btn" style="width: 100%; text-align: center; color: var(--text-color);">+ Tambah Tugas</button>
+            <button id="add-task-btn" class="btn" style="width: 100%; text-align: center; color: var(--text-color);">+ Tambah Tugas</button>
             <div style="height: 1.5rem;"></div>
 
             <div class="task-filters">
-                <button class="filter-btn active">Semua</button>
-                <button class="filter-btn">Belum selesai</button>
-                <button class="filter-btn">Selesai</button>
-                <button class="filter-btn">Terlambat</button>
-                <button class="filter-btn">Prioritas (***+)</button>
+                <button class="filter-btn active" data-filter="all">Semua</button>
+                <button class="filter-btn" data-filter="active">Belum selesai</button>
+                <button class="filter-btn" data-filter="completed">Selesai</button>
+                <button class="filter-btn" data-filter="overdue">Terlambat</button>
+                <button class="filter-btn" data-filter="priority">Prioritas (***+)</button>
             </div>
 
-            <div class="task-list-empty">
+            <div id="task-list-empty" class="task-list-empty">
                 <div class="empty-icon">&#128198;</div>
                 <div>Tidak ada alur tugas saat ini</div>
             </div>
+
+            <div id="task-container" class="task-container"></div>
 
         </div>
 
@@ -215,44 +309,236 @@
     </footer>
 
     <script>
+        // Inisialisasi Data dari LocalStorage atau array kosong
+        let tasks = JSON.parse(localStorage.getItem('abbilefa_tasks')) || [];
+        let selectedRating = 0;
+        let currentFilter = 'all';
+
+        // Penyeleksi Elemen DOM
         const stars = document.querySelectorAll('.star');
         const ratingText = document.getElementById('rating-text');
-        let selectedRating = 0;
+        const taskTitleInput = document.getElementById('task-title');
+        const taskDeadlineInput = document.getElementById('task-deadline');
+        const taskCategorySelect = document.getElementById('task-category');
+        const addTaskBtn = document.getElementById('add-task-btn');
+        const taskContainer = document.getElementById('task-container');
+        const taskListEmpty = document.getElementById('task-list-empty');
+        
+        const statTotal = document.getElementById('stat-total');
+        const statCompleted = document.getElementById('stat-completed');
+        const statUrgent = document.getElementById('stat-urgent');
+        const filterBtns = document.querySelectorAll('.filter-btn');
 
+        // 1. LOGIKA INTERAKSI BINTANG RATING
         stars.forEach(star => {
-            // Ketika kursor masuk ke area bintang (Hover)
             star.addEventListener('mouseover', () => {
-                const currentHoverValue = star.getAttribute('data-value');
-                highlightStars(currentHoverValue);
+                highlightStars(star.getAttribute('data-value'));
             });
-
-            // Ketika kursor keluar dari area bintang
             star.addEventListener('mouseleave', () => {
                 highlightStars(selectedRating);
             });
-
-            // Ketika bintang diklik
             star.addEventListener('click', () => {
-                selectedRating = star.getAttribute('data-value');
+                selectedRating = parseInt(star.getAttribute('data-value'));
                 ratingText.textContent = `Tingkat kesulitan: ${selectedRating} Bintang`;
-                ratingText.style.color = '#ffb300'; // Mengubah teks menjadi warna emas saat dipilih
+                ratingText.style.color = '#ffb300';
                 highlightStars(selectedRating);
             });
         });
 
-        // Fungsi internal untuk mengubah visual bintang
         function highlightStars(rating) {
             stars.forEach(star => {
-                const starValue = star.getAttribute('data-value');
-                if (starValue <= rating) {
-                    star.innerHTML = '&#9733;'; // Mengubah karakter jadi bintang penuh (★)
-                    star.style.color = '#ffb300'; // Warna emas terang modern
+                if (star.getAttribute('data-value') <= rating) {
+                    star.innerHTML = '&#9733;';
+                    star.style.color = '#ffb300';
                 } else {
-                    star.innerHTML = '&#9734;'; // Mengubah karakter jadi bintang kosong (☆)
-                    star.style.color = '#444';    // Kembali ke warna abu-abu gelap tema dark
+                    star.innerHTML = '&#9734;';
+                    star.style.color = '#444';
                 }
             });
         }
+
+        // 2. FUNGSI MENAMBAH TUGAS BARU
+        addTaskBtn.addEventListener('click', () => {
+            const title = taskTitleInput.value.trim();
+            const deadline = taskDeadlineInput.value;
+            const category = taskCategorySelect.value;
+
+            if (!title) {
+                alert('Silakan masukkan judul tugas terlebih dahulu!');
+                return;
+            }
+
+            // Membuat struktur data objek tugas baru
+            const newTask = {
+                id: Date.now().toString(),
+                title: title,
+                deadline: deadline,
+                category: category,
+                rating: selectedRating,
+                completed: false
+            };
+
+            tasks.push(newTask);
+            saveAndRender();
+
+            // Reset input form setelah berhasil ditambahkan
+            taskTitleInput.value = '';
+            taskDeadlineInput.value = '';
+            selectedRating = 0;
+            ratingText.textContent = 'Pilih bintang';
+            ratingText.style.color = 'var(--text-muted)';
+            highlightStars(0);
+        });
+
+        // 3. FUNGSI PENYIMPANAN DAN RENDER ULANG
+        function saveAndRender() {
+            localStorage.setItem('abbilefa_tasks', JSON.stringify(tasks));
+            updateStatistics();
+            renderTasks();
+        }
+
+        // 4. PEMBARUAN PANEL STATISTIK
+        function updateStatistics() {
+            const today = new Date();
+            today.setHours(0,0,0,0);
+
+            let completedCount = 0;
+            let urgentCount = 0;
+
+            tasks.forEach(task => {
+                if (task.completed) {
+                    completedCount++;
+                } else if (task.deadline) {
+                    const dlDate = new Date(task.deadline);
+                    dlDate.setHours(0,0,0,0);
+                    const diffTime = dlDate - today;
+                    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                    // Masuk kategori jika deadline sisa <= 3 hari ATAU sudah lewat tempo (negatif)
+                    if (diffDays <= 3) {
+                        urgentCount++;
+                    }
+                }
+            });
+
+            statTotal.textContent = tasks.length;
+            statCompleted.textContent = completedCount;
+            statUrgent.textContent = urgentCount;
+        }
+
+        // 5. AMANKAN TEKS DARI XSS (INJEKSI HTML)
+        function escapeHtml(text) {
+            return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        }
+
+        // FORMAT TANGGAL KE INDONESIA
+        function formatDate(dateStr) {
+            const options = { year: 'numeric', month: 'short', day: 'numeric' };
+            return new Date(dateStr).toLocaleDateString('id-ID', options);
+        }
+
+        // 6. TAMPILKAN DAFTAR TUGAS SESUAI FILTER
+        function renderTasks() {
+            taskContainer.innerHTML = '';
+            const today = new Date();
+            today.setHours(0,0,0,0);
+
+            // Menyaring data tugas sesuai filter aktif
+            const filteredTasks = tasks.filter(task => {
+                if (currentFilter === 'active') return !task.completed;
+                if (currentFilter === 'completed') return task.completed;
+                if (currentFilter === 'priority') return task.rating >= 3;
+                if (currentFilter === 'overdue') {
+                    if (task.completed || !task.deadline) return false;
+                    const dlDate = new Date(task.deadline);
+                    dlDate.setHours(0,0,0,0);
+                    return dlDate < today;
+                }
+                return true; // Filter 'all'
+            });
+
+            // Tampilkan atau sembunyikan info kosong
+            if (filteredTasks.length === 0) {
+                taskListEmpty.style.display = 'block';
+            } else {
+                taskListEmpty.style.display = 'none';
+
+                filteredTasks.forEach(task => {
+                    const item = document.createElement('div');
+                    item.className = `task-item ${task.completed ? 'completed' : ''}`;
+                    item.dataset.id = task.id;
+
+                    // Mengatur icon/bintang rating terisi
+                    let starsHtml = '';
+                    for (let i = 1; i <= 5; i++) {
+                        starsHtml += i <= task.rating ? '★' : '☆';
+                    }
+
+                    // Mengatur tampilan status deadline
+                    let dateDisplay = 'Tanpa deadline';
+                    let overdueLabel = '';
+                    if (task.deadline) {
+                        dateDisplay = formatDate(task.deadline);
+                        const dlDate = new Date(task.deadline);
+                        dlDate.setHours(0,0,0,0);
+                        if (dlDate < today && !task.completed) {
+                            overdueLabel = `<span class="badge badge-danger">Terlambat!</span>`;
+                        }
+                    }
+
+                    item.innerHTML = `
+                        <div class="task-item-info">
+                            <div class="task-item-title">${escapeHtml(task.title)}</div>
+                            <div class="task-item-meta">
+                                <span class="badge">${escapeHtml(task.category)}</span>
+                                <span>📅 ${dateDisplay} ${overdueLabel}</span>
+                                <span style="color: #ffb300; letter-spacing: 2px;">${starsHtml}</span>
+                            </div>
+                        </div>
+                        <div class="task-item-actions">
+                            <button class="action-btn ${task.completed ? 'btn-uncomplete' : 'btn-complete'}">
+                                ${task.completed ? 'Batal' : 'Selesai'}
+                            </button>
+                            <button class="action-btn btn-delete">Hapus</button>
+                        </div>
+                    `;
+                    taskContainer.appendChild(item);
+                });
+            }
+        }
+
+        // 7. SISTEM EVENT DELEGATION UNTUK TOMBOL SELESAI & HAPUS
+        taskContainer.addEventListener('click', (e) => {
+            const item = e.target.closest('.task-item');
+            if (!item) return;
+            const id = item.dataset.id;
+
+            if (e.target.classList.contains('btn-complete') || e.target.classList.contains('btn-uncomplete')) {
+                // Toggle status kelar tugas
+                tasks = tasks.map(task => {
+                    if (task.id === id) task.completed = !task.completed;
+                    return task;
+                });
+                saveAndRender();
+            } else if (e.target.classList.contains('btn-delete')) {
+                // Hapus tugas dari list
+                tasks = tasks.filter(task => task.id !== id);
+                saveAndRender();
+            }
+        });
+
+        // 8. LOGIKA PENGENDALI FILTER BUTTONS
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentFilter = btn.getAttribute('data-filter');
+                renderTasks();
+            });
+        });
+
+        // JALANKAN PROSES AWAL SAAT HALAMAN DI-LOAD
+        updateStatistics();
+        renderTasks();
     </script>
 
 </body>
