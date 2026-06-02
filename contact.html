@@ -52,18 +52,25 @@
             margin-bottom: 1.5rem;
             flex-grow: 1;
         }
-        .staff-contact-links {
-            display: flex;
-            gap: 15px;
-        }
-        .staff-contact-icon {
-            font-size: 1.3rem;
-            color: var(--text-color);
+        /* Style baru untuk tombol WhatsApp di setiap staff */
+        .btn-whatsapp-staff {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: #25D366;
+            color: #fff;
+            padding: 0.6rem 1.5rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-radius: 20px;
             text-decoration: none;
-            transition: color 0.3s;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.2);
         }
-        .staff-contact-icon:hover {
-            color: var(--accent-color);
+        .btn-whatsapp-staff:hover {
+            background-color: #20ba56;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(37, 211, 102, 0.3);
         }
     </style>
 </head>
@@ -85,7 +92,7 @@
         
         <header class="page-header">
             <h1 class="page-title">Hubungi Tim Kami</h1>
-            <p class="page-subtitle">Berkolaborasi dengan Ahli untuk Mewujudkan Visi Anda.</p>
+            <p class="page-subtitle">Hubungi langsung anggota tim kami melalui WhatsApp untuk berkolaborasi.</p>
         </header>
 
         <div class="staff-grid">
@@ -96,11 +103,10 @@
                 <h3 class="staff-name">Abednego Alvin Simanjuntak</h3>
                 <p class="staff-role">Web Developer</p>
                 <p class="staff-description">Membangun situs web modern dengan desain responsif dan performa tinggi.</p>
-                <div class="staff-contact-links">
-                    <a href="mailto:andi@abbilefa.com" class="staff-contact-icon" title="Email">&#9993;</a>
-                    <a href="#" class="staff-contact-icon" title="LinkedIn">&#128100;</a>
-                    <a href="#" class="staff-contact-icon" title="Portfolio">&#128196;</a>
-                </div>
+                <!-- Ganti nomor HP di href (Gunakan kode 62, jangan pakai angka 0 di depan) -->
+                <a href="https://wa.me/6289519565824?text=Halo%20Abednego,%20saya%20tertarik%20dengan%20layanan%20Web%20Dev" target="_blank" class="btn-whatsapp-staff">
+                    <span>💬</span> Hubungi via WA
+                </a>
             </div>
 
             <!-- 2. Programmer -->
@@ -109,11 +115,10 @@
                 <h3 class="staff-name">Alessio Edgard Simanjuntak</h3>
                 <p class="staff-role">Programmer</p>
                 <p class="staff-description">Mendesain dan mengembangkan algoritma canggih untuk solusi perangkat lunak.</p>
-                <div class="staff-contact-links">
-                    <a href="mailto:siti@abbilefa.com" class="staff-contact-icon" title="Email">&#9993;</a>
-                    <a href="#" class="staff-contact-icon" title="LinkedIn">&#128100;</a>
-                    <a href="#" class="staff-contact-icon" title="Portfolio">&#128196;</a>
-                </div>
+                <!-- Ganti nomor HP di href -->
+                <a href="https://wa.me/6282180031185?text=Halo%20Alessio,%20saya%20ingin%20berdiskusi%20tentang%20program" target="_blank" class="btn-whatsapp-staff">
+                    <span>💬</span> Hubungi via WA
+                </a>
             </div>
 
             <!-- 3. Graphic Designer -->
@@ -122,11 +127,10 @@
                 <h3 class="staff-name">Daffa Arkan Rauf Nugroho</h3>
                 <p class="staff-role">Graphic Designer</p>
                 <p class="staff-description">Membuat identitas visual yang menonjol dan komunikatif untuk merek Anda.</p>
-                <div class="staff-contact-links">
-                    <a href="mailto:rendi@abbilefa.com" class="staff-contact-icon" title="Email">&#9993;</a>
-                    <a href="#" class="staff-contact-icon" title="LinkedIn">&#128100;</a>
-                    <a href="#" class="staff-contact-icon" title="Portfolio">&#128196;</a>
-                </div>
+                <!-- Ganti nomor HP di href -->
+                <a href="https://wa.me/6281385675718?text=Halo%20Daffa,%20saya%20butuh%20bantuan%20desain%20grafis" target="_blank" class="btn-whatsapp-staff">
+                    <span>💬</span> Hubungi via WA
+                </a>
             </div>
 
             <!-- 4. Content Writer -->
@@ -135,11 +139,10 @@
                 <h3 class="staff-name">Abiyasa Jalu Langit</h3>
                 <p class="staff-role">Content Writer</p>
                 <p class="staff-description">Menyusun konten yang menarik, informatif, dan dioptimalkan untuk SEO.</p>
-                <div class="staff-contact-links">
-                    <a href="mailto:alya@abbilefa.com" class="staff-contact-icon" title="Email">&#9993;</a>
-                    <a href="#" class="staff-contact-icon" title="LinkedIn">&#128100;</a>
-                    <a href="#" class="staff-contact-icon" title="Portfolio">&#128196;</a>
-                </div>
+                <!-- Ganti nomor HP di href -->
+                <a href="https://wa.me/6283135341201?text=Halo%20Abiyasa,%20boleh%20tanya-tanya%20tentang%20content%20writing?" target="_blank" class="btn-whatsapp-staff">
+                    <span>💬</span> Hubungi via WA
+                </a>
             </div>
 
         </div>
