@@ -11,7 +11,8 @@
     <style>
         .task-stats {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            /* Diubah menjadi minmax 220px agar 4 kartu bisa berjejer rapi di layar komputer */
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 20px;
             margin-bottom: 2rem;
         }
@@ -28,6 +29,11 @@
             color: var(--accent-color);
             font-weight: 700;
         }
+        
+        /* Warna indikator teks khusus statistik agar lebih informatif */
+        #stat-completed { color: #2ecc71; } /* Hijau */
+        #stat-approaching { color: #f1c40f; } /* Kuning */
+        #stat-overdue { color: #e74c3c; } /* Merah */
         
         .ui-divider {
             border-bottom: 2px solid #333;
@@ -115,7 +121,6 @@
             margin-bottom: 1rem;
         }
 
-        /* --- STYLE BARU UNTUK DAFTAR TUGAS AKTIF --- */
         .task-container {
             display: flex;
             flex-direction: column;
@@ -240,8 +245,12 @@
                     <div class="stat-value" id="stat-completed">0</div>
                 </div>
                 <div class="ui-card stat-card">
-                    <div class="stat-label">Mendekati Deadline / Lewat</div>
-                    <div class="stat-value" id="stat-urgent">0</div>
+                    <div class="stat-label">Mendekati Deadline</div>
+                    <div class="stat-value" id="stat-approaching">0</div>
+                </div>
+                <div class="ui-card stat-card">
+                    <div class="stat-label">Lewat Deadline</div>
+                    <div class="stat-value" id="stat-overdue">0</div>
                 </div>
             </div>
 
@@ -326,7 +335,9 @@
         
         const statTotal = document.getElementById('stat-total');
         const statCompleted = document.getElementById('stat-completed');
-        const statUrgent = document.getElementById('stat-urgent');
+        // DOM lama displit menjadi dua elemen baru di bawah ini
+        const statApproaching = document.getElementById('stat-approaching');
+        const statOverdue = document.getElementById('stat-overdue');
         const filterBtns = document.querySelectorAll('.filter-btn');
 
         // 1. LOGIKA INTERAKSI BINTANG RATING
@@ -397,13 +408,14 @@
             renderTasks();
         }
 
-        // 4. PEMBARUAN PANEL STATISTIK
+        // 4. PEMBARUAN PANEL STATISTIK (LOGIKA TERPISAH)
         function updateStatistics() {
             const today = new Date();
             today.setHours(0,0,0,0);
 
             let completedCount = 0;
-            let urgentCount = 0;
+            let approachingCount = 0;
+            let overdueCount = 0;
 
             tasks.forEach(task => {
                 if (task.completed) {
@@ -413,133 +425,10 @@
                     dlDate.setHours(0,0,0,0);
                     const diffTime = dlDate - today;
                     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-                    // Masuk kategori jika deadline sisa <= 3 hari ATAU sudah lewat tempo (negatif)
-                    if (diffDays <= 3) {
-                        urgentCount++;
-                    }
-                }
-            });
-
-            statTotal.textContent = tasks.length;
-            statCompleted.textContent = completedCount;
-            statUrgent.textContent = urgentCount;
-        }
-
-        // 5. AMANKAN TEKS DARI XSS (INJEKSI HTML)
-        function escapeHtml(text) {
-            return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-        }
-
-        // FORMAT TANGGAL KE INDONESIA
-        function formatDate(dateStr) {
-            const options = { year: 'numeric', month: 'short', day: 'numeric' };
-            return new Date(dateStr).toLocaleDateString('id-ID', options);
-        }
-
-        // 6. TAMPILKAN DAFTAR TUGAS SESUAI FILTER
-        function renderTasks() {
-            taskContainer.innerHTML = '';
-            const today = new Date();
-            today.setHours(0,0,0,0);
-
-            // Menyaring data tugas sesuai filter aktif
-            const filteredTasks = tasks.filter(task => {
-                if (currentFilter === 'active') return !task.completed;
-                if (currentFilter === 'completed') return task.completed;
-                if (currentFilter === 'priority') return task.rating >= 3;
-                if (currentFilter === 'overdue') {
-                    if (task.completed || !task.deadline) return false;
-                    const dlDate = new Date(task.deadline);
-                    dlDate.setHours(0,0,0,0);
-                    return dlDate < today;
-                }
-                return true; // Filter 'all'
-            });
-
-            // Tampilkan atau sembunyikan info kosong
-            if (filteredTasks.length === 0) {
-                taskListEmpty.style.display = 'block';
-            } else {
-                taskListEmpty.style.display = 'none';
-
-                filteredTasks.forEach(task => {
-                    const item = document.createElement('div');
-                    item.className = `task-item ${task.completed ? 'completed' : ''}`;
-                    item.dataset.id = task.id;
-
-                    // Mengatur icon/bintang rating terisi
-                    let starsHtml = '';
-                    for (let i = 1; i <= 5; i++) {
-                        starsHtml += i <= task.rating ? '★' : '☆';
-                    }
-
-                    // Mengatur tampilan status deadline
-                    let dateDisplay = 'Tanpa deadline';
-                    let overdueLabel = '';
-                    if (task.deadline) {
-                        dateDisplay = formatDate(task.deadline);
-                        const dlDate = new Date(task.deadline);
-                        dlDate.setHours(0,0,0,0);
-                        if (dlDate < today && !task.completed) {
-                            overdueLabel = `<span class="badge badge-danger">Terlambat!</span>`;
-                        }
-                    }
-
-                    item.innerHTML = `
-                        <div class="task-item-info">
-                            <div class="task-item-title">${escapeHtml(task.title)}</div>
-                            <div class="task-item-meta">
-                                <span class="badge">${escapeHtml(task.category)}</span>
-                                <span>📅 ${dateDisplay} ${overdueLabel}</span>
-                                <span style="color: #ffb300; letter-spacing: 2px;">${starsHtml}</span>
-                            </div>
-                        </div>
-                        <div class="task-item-actions">
-                            <button class="action-btn ${task.completed ? 'btn-uncomplete' : 'btn-complete'}">
-                                ${task.completed ? 'Batal' : 'Selesai'}
-                            </button>
-                            <button class="action-btn btn-delete">Hapus</button>
-                        </div>
-                    `;
-                    taskContainer.appendChild(item);
-                });
-            }
-        }
-
-        // 7. SISTEM EVENT DELEGATION UNTUK TOMBOL SELESAI & HAPUS
-        taskContainer.addEventListener('click', (e) => {
-            const item = e.target.closest('.task-item');
-            if (!item) return;
-            const id = item.dataset.id;
-
-            if (e.target.classList.contains('btn-complete') || e.target.classList.contains('btn-uncomplete')) {
-                // Toggle status kelar tugas
-                tasks = tasks.map(task => {
-                    if (task.id === id) task.completed = !task.completed;
-                    return task;
-                });
-                saveAndRender();
-            } else if (e.target.classList.contains('btn-delete')) {
-                // Hapus tugas dari list
-                tasks = tasks.filter(task => task.id !== id);
-                saveAndRender();
-            }
-        });
-
-        // 8. LOGIKA PENGENDALI FILTER BUTTONS
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                currentFilter = btn.getAttribute('data-filter');
-                renderTasks();
-            });
-        });
-
-        // JALANKAN PROSES AWAL SAAT HALAMAN DI-LOAD
-        updateStatistics();
-        renderTasks();
-    </script>
-
-</body>
-</html>
+                    
+                    if (diffDays < 0) {
+                        // Jika hari bermuatan negatif berarti sudah lewat waktu tempo
+                        overdueCount++;
+                    } else if (diffDays >= 0 && diffDays <= 3) {
+                        // Jika tersisa 0 hingga 3 hari masuk kategori mendekati deadline
+                        approachingCount++;
