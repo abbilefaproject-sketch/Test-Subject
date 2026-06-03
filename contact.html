@@ -8,78 +8,19 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <style>
-        .staff-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-        .staff-card {
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .staff-photo-placeholder {
-            width: 120px;
-            height: 120px;
-            background-color: #333;
-            border-radius: 50%;
-            margin-bottom: 1.5rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 3rem;
-            color: var(--text-muted);
-            border: 3px solid var(--card-bg-color);
-            box-shadow: var(--shadow);
-        }
-        .staff-name {
-            font-size: 1.3rem;
-            color: var(--accent-color);
-            margin-bottom: 0.3rem;
-        }
-        .staff-role {
-            font-size: 1rem;
-            color: var(--text-muted);
-            margin-bottom: 1rem;
-            font-weight: 500;
-        }
-        .staff-description {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-            flex-grow: 1;
-        }
-        /* Style baru untuk tombol WhatsApp di setiap staff */
-        .btn-whatsapp-staff {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background-color: #25D366;
-            color: #fff;
-            padding: 0.6rem 1.5rem;
-            font-size: 0.9rem;
-            font-weight: 600;
-            border-radius: 20px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.2);
-        }
-        .btn-whatsapp-staff:hover {
-            background-color: #20ba56;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(37, 211, 102, 0.3);
-        }
-    </style>
 </head>
 <body>
 
-    <!-- Navbar -->
     <nav class="navbar">
         <a href="index.html" class="navbar-brand">Abbilefa Project</a>
-        <ul class="navbar-nav">
+        
+        <button class="hamburger" id="hamburger-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <ul class="navbar-nav" id="navbar-menu">
             <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
             <li class="nav-item"><a href="about.html" class="nav-link">About Us</a></li>
             <li class="nav-item"><a href="project.html" class="nav-link">Project</a></li>
@@ -87,71 +28,69 @@
         </ul>
     </nav>
 
-    <!-- Kontainer Hubungi Kami -->
     <div class="container">
-        
         <header class="page-header">
             <h1 class="page-title">Hubungi Tim Kami</h1>
             <p class="page-subtitle">Hubungi langsung anggota tim kami melalui WhatsApp untuk berkolaborasi.</p>
         </header>
 
         <div class="staff-grid">
-            
-            <!-- 1. Web Developer -->
             <div class="ui-card staff-card">
                 <div class="staff-photo-placeholder">&#128187;</div>
                 <h3 class="staff-name">Abednego Alvin Simanjuntak</h3>
                 <p class="staff-role">Web Developer</p>
                 <p class="staff-description">Membangun situs web modern dengan desain responsif dan performa tinggi.</p>
-                <!-- Ganti nomor HP di href (Gunakan kode 62, jangan pakai angka 0 di depan) -->
                 <a href="https://wa.me/6289519565824?text=Halo%20Abednego,%20saya%20tertarik%20dengan%20layanan%20Web%20Dev" target="_blank" class="btn-whatsapp-staff">
                     <span>💬</span> WA
                 </a>
             </div>
 
-            <!-- 2. Programmer -->
             <div class="ui-card staff-card">
                 <div class="staff-photo-placeholder">&#128295;</div>
                 <h3 class="staff-name">Alessio Edgard Simanjuntak</h3>
                 <p class="staff-role">Programmer</p>
                 <p class="staff-description">Mendesain dan mengembangkan algoritma canggih untuk solusi perangkat lunak.</p>
-                <!-- Ganti nomor HP di href -->
                 <a href="https://wa.me/6282180031185?text=Halo%20Alessio,%20saya%20ingin%20berdiskusi%20tentang%20program" target="_blank" class="btn-whatsapp-staff">
                     <span>💬</span> WA
                 </a>
             </div>
 
-            <!-- 3. Graphic Designer -->
             <div class="ui-card staff-card">
                 <div class="staff-photo-placeholder">&#127912;</div>
                 <h3 class="staff-name">Daffa Arkan Rauf Nugroho</h3>
                 <p class="staff-role">Graphic Designer</p>
                 <p class="staff-description">Membuat identitas visual yang menonjol dan komunikatif untuk merek Anda.</p>
-                <!-- Ganti nomor HP di href -->
                 <a href="https://wa.me/6281385675718?text=Halo%20Daffa,%20saya%20butuh%20bantuan%20desain%20grafis" target="_blank" class="btn-whatsapp-staff">
                     <span>💬</span> WA
                 </a>
             </div>
 
-            <!-- 4. Content Writer -->
             <div class="ui-card staff-card">
                 <div class="staff-photo-placeholder">&#9997;</div>
                 <h3 class="staff-name">Abiyasa Jalu Langit</h3>
                 <p class="staff-role">Content Writer</p>
                 <p class="staff-description">Menyusun konten yang menarik, informatif, dan dioptimalkan untuk SEO.</p>
-                <!-- Ganti nomor HP di href -->
                 <a href="https://wa.me/6283135341201?text=Halo%20Abiyasa,%20boleh%20tanya-tanya%20tentang%20content%20writing?" target="_blank" class="btn-whatsapp-staff">
                     <span>💬</span> WA
                 </a>
             </div>
-
         </div>
-
     </div>
 
     <footer class="footer">
         &copy; 2026 Abbilefa Project. Otw dipatenkan.
     </footer>
 
-</body>
-</html>
+    <script>
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const navbarMenu = document.getElementById('navbar-menu');
+
+        hamburgerBtn.addEventListener('click', () => {
+            navbarMenu.classList.toggle('active');
+            hamburgerBtn.classList.toggle('active');
+        });
+
+        document.addEventListener('click', (event) => {
+            if (!hamburgerBtn.contains(event.target) && !navbarMenu.contains(event.target)) {
+                navbarMenu.classList.remove('active');
+                hamburgerBtn.
