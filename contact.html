@@ -78,6 +78,7 @@
     </footer>
 
     <script>
+        <script>
         const hamburgerBtn = document.getElementById('hamburger-btn');
         const navbarMenu = document.getElementById('navbar-menu');
 
@@ -89,4 +90,9 @@
         document.addEventListener('click', (event) => {
             if (!hamburgerBtn.contains(event.target) && !navbarMenu.contains(event.target)) {
                 navbarMenu.classList.remove('active');
-                hamburgerBtn.
+                hamburgerBtn.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
