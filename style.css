@@ -414,3 +414,13 @@ body {
       padding: 0.6rem; 
   }
 }
+/* Efek Animasi Hamburger jadi Silang (X) saat Aktif */
+.hamburger.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+.hamburger.active span:nth-child(2) {
+    opacity: 0; /* Sembunyikan garis tengah */
+}
+.hamburger.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
