@@ -138,6 +138,105 @@ body {
   margin-bottom: 20px;
 }
 
+/* --- FITUR SPESIFIK: ABOUT US (CANVA EMBED) --- */
+.canva-embed-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-top: 56.2500%;
+    padding-bottom: 0;
+    box-shadow: var(--shadow);
+    margin-top: 1.6em;
+    margin-bottom: 0.9em;
+    overflow: hidden;
+    border-radius: var(--border-radius);
+    will-change: transform;
+}
+.canva-iframe {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+.canva-link {
+    text-align: center;
+    display: block;
+    margin-top: 0.5rem;
+    color: var(--accent-color);
+    text-decoration: none;
+}
+.canva-link:hover {
+    text-decoration: underline;
+}
+
+/* --- FITUR SPESIFIK: CONTACT US (STAFF GRID) --- */
+.staff-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+.staff-card {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.staff-photo-placeholder {
+    width: 120px;
+    height: 120px;
+    background-color: #333;
+    border-radius: 50%;
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    color: var(--text-muted);
+    border: 3px solid var(--card-bg-color);
+    box-shadow: var(--shadow);
+}
+.staff-name {
+    font-size: 1.3rem;
+    color: var(--accent-color);
+    margin-bottom: 0.3rem;
+}
+.staff-role {
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+.staff-description {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+.btn-whatsapp-staff {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #25D366;
+    color: #fff;
+    padding: 0.6rem 1.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(37, 211, 102, 0.2);
+}
+.btn-whatsapp-staff:hover {
+    background-color: #20ba56;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(37, 211, 102, 0.3);
+}
+
 /* --- SISTEM MANAJEMEN TUGAS --- */
 .task-stats {
     display: grid;
@@ -340,11 +439,20 @@ body {
   margin-top: 40px;
 }
 
+/* --- ANIMASI HAMBURGER JADI SILANG (X) --- */
+.hamburger.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
 
 /* ==========================================================================
-   MEDIA QUERIES - MENCEGAH LAYOUT BERANTAKAN DI HP & TABLET
+    MEDIA QUERIES - MENCEGAH LAYOUT BERANTAKAN DI HP & TABLET
    ========================================================================== */
-
 @media (max-width: 768px) {
   .page-title {
     font-size: 2rem; 
@@ -355,13 +463,12 @@ body {
       gap: 10px;
   }
   
-  /* Logika Munculnya Hamburger Menu */
   .hamburger {
-      display: flex; /* Munculkan tombol di HP */
+      display: flex; 
   }
 
   .navbar-nav {
-      display: none; /* Sembunyikan menu awalnya */
+      display: none; 
       flex-direction: column;
       position: absolute;
       top: 100%;
@@ -378,7 +485,6 @@ body {
       margin-left: 0;
   }
 
-  /* Ini akan dipicu oleh JavaScript (tombol diklik) */
   .navbar-nav.active {
       display: flex;
   }
@@ -394,7 +500,6 @@ body {
       padding: 1rem; 
   }
   
-  /* Tugas jadi vertikal di HP */
   .task-item {
       flex-direction: column;
       align-items: flex-start;
@@ -402,7 +507,6 @@ body {
       padding: 1rem;
   }
 
-  /* Tombol Selesai & Hapus Melebar */
   .task-item-actions {
       width: 100%;
       justify-content: space-between;
@@ -413,14 +517,4 @@ body {
       text-align: center;
       padding: 0.6rem; 
   }
-}
-/* Efek Animasi Hamburger jadi Silang (X) saat Aktif */
-.hamburger.active span:nth-child(1) {
-    transform: rotate(-45deg) translate(-5px, 6px);
-}
-.hamburger.active span:nth-child(2) {
-    opacity: 0; /* Sembunyikan garis tengah */
-}
-.hamburger.active span:nth-child(3) {
-    transform: rotate(45deg) translate(-5px, -6px);
 }
