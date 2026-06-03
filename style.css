@@ -1,18 +1,20 @@
-/* style.css - Global Dark & Modern Theme */
+/* style.css - Global Dark, Modern & Fully Responsive Theme */
 
-/* FIX: Mencegah layout error / scrollbar horizontal akibat padding navbar */
+/* 1. ATURAN UTAMA: Mencegah elemen meluber keluar layar (Penyebab utama layout berantakan) */
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 :root {
-  --bg-color: #121212; /* Warna latar belakang sangat gelap */
-  --card-bg-color: #1e1e1e; /* Warna latar belakang kartu/elemen */
-  --text-color: #e0e0e0; /* Warna teks utama */
-  --text-muted: #a0a0a0; /* Warna teks pudar */
-  --accent-color: #00bcd4; /* Warna aksen modern (Cyan) */
-  --accent-hover: #0097a7; /* Warna aksen hover */
-  --font-family: 'Poppins', sans-serif; /* Font sans-serif bersih */
+  --bg-color: #121212; 
+  --card-bg-color: #1e1e1e; 
+  --text-color: #e0e0e0; 
+  --text-muted: #a0a0a0; 
+  --accent-color: #00bcd4; 
+  --accent-hover: #0097a7; 
+  --font-family: 'Poppins', sans-serif; 
   --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
   --border-radius: 8px;
 }
@@ -21,9 +23,8 @@ body {
   font-family: var(--font-family);
   background-color: var(--bg-color);
   color: var(--text-color);
-  margin: 0;
-  padding: 0;
   line-height: 1.6;
+  overflow-x: hidden; /* Menjamin tidak ada scrollbar horizontal yang merusak tampilan */
 }
 
 /* Navigasi Bar */
@@ -35,6 +36,7 @@ body {
   align-items: center;
   position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
   box-shadow: var(--shadow);
   z-index: 1000;
@@ -50,8 +52,6 @@ body {
 .navbar-nav {
   list-style: none;
   display: flex;
-  margin: 0;
-  padding: 0;
 }
 
 .nav-item {
@@ -72,14 +72,15 @@ body {
 /* Kontainer Utama */
 .container {
   max-width: 1200px;
-  margin: 100px auto 40px; /* Jarak untuk navbar yang tetap */
+  margin: 100px auto 40px; 
   padding: 0 20px;
+  width: 100%;
 }
 
 /* Header Halaman */
 .page-header {
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 2.5rem;
 }
 
 .page-title {
@@ -116,23 +117,10 @@ body {
   padding: 1.5rem;
   border-radius: var(--border-radius);
   box-shadow: var(--shadow);
-  transition: transform 0.2s ease-in-out;
+  margin-bottom: 20px;
 }
 
-/* Footer (Sederhana) */
-.footer {
-  text-align: center;
-  padding: 1.5rem;
-  background-color: var(--card-bg-color);
-  color: var(--text-muted);
-  margin-top: 40px;
-}
-
-
-/* ==========================================================================
-   STYLE TAMBAHAN KHUSUS: SISTEM MANAJEMEN PROYEK & TUGAS SEKOLAH
-   ========================================================================== */
-
+/* Panel Statistik (Otomatis menyesuaikan jumlah kolom berdasarkan lebar layar) */
 .task-stats {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -153,16 +141,16 @@ body {
     font-weight: 700;
 }
 
-/* Warna khusus angka panel statistik */
-#stat-completed { color: #2ecc71; }   /* Hijau */
-#stat-approaching { color: #f1c40f; } /* Kuning */
-#stat-overdue { color: #e74c3c; }     /* Merah */
+#stat-completed { color: #2ecc71; }   
+#stat-approaching { color: #f1c40f; } 
+#stat-overdue { color: #e74c3c; }     
 
 .ui-divider {
     border-bottom: 2px solid #333;
     margin: 2rem 0;
 }
 
+/* Form Input Tugas (Menggunakan Grid 3 Kolom untuk Desktop) */
 .task-input-section {
     display: grid;
     grid-template-columns: 2fr 1fr 1.5fr;
@@ -177,6 +165,7 @@ body {
     color: var(--text-color);
     border-radius: var(--border-radius);
     font-family: var(--font-family);
+    font-size: 0.95rem;
 }
 .task-input::placeholder {
     color: var(--text-muted);
@@ -193,25 +182,23 @@ body {
 .difficulty-section {
     color: var(--text-color);
     margin-bottom: 1.5rem;
-    user-select: none;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
 }
-
 .difficulty-stars {
     display: inline-flex;
     gap: 5px;
-    margin-left: 10px;
     font-size: 1.4rem;
-    vertical-align: middle;
 }
 .star {
     cursor: pointer;
     color: #444;
     transition: color 0.2s ease, transform 0.1s ease;
 }
-.star:hover {
-    transform: scale(1.2);
-}
 
+/* Filter Tombol (Bisa otomatis melipat ke bawah jika layar sempit) */
 .task-filters {
     display: flex;
     gap: 10px;
@@ -226,6 +213,7 @@ body {
     border-radius: 20px;
     cursor: pointer;
     transition: all 0.3s;
+    font-size: 0.9rem;
 }
 .filter-btn:hover, .filter-btn.active {
     background-color: var(--accent-color);
@@ -250,6 +238,8 @@ body {
     gap: 15px;
     margin-top: 1rem;
 }
+
+/* Item Daftar Tugas (Tampilan Desktop: Menyamping) */
 .task-item {
     display: flex;
     justify-content: space-between;
@@ -260,6 +250,7 @@ body {
     border-radius: var(--border-radius);
     box-shadow: var(--shadow);
     transition: all 0.3s ease;
+    gap: 15px;
 }
 .task-item.completed {
     border-left-color: #2ecc71;
@@ -273,11 +264,14 @@ body {
     display: flex;
     flex-direction: column;
     gap: 6px;
+    flex: 1; /* Agar teks mengambil ruang sisa dengan adil */
+    min-width: 0; /* Mencegah teks panjang merusak layout flexbox */
 }
 .task-item-title {
     font-size: 1.1rem;
     font-weight: 600;
     color: var(--text-color);
+    word-wrap: break-word; /* Memaksa kata yang terlalu panjang untuk patah ke bawah */
 }
 .task-item-meta {
     font-size: 0.85rem;
@@ -303,6 +297,7 @@ body {
 .task-item-actions {
     display: flex;
     gap: 8px;
+    flex-shrink: 0; /* Mencegah tombol mengecil/gepeng */
 }
 .action-btn {
     padding: 0.5rem 0.9rem;
@@ -313,48 +308,75 @@ body {
     font-size: 0.85rem;
     transition: background 0.2s;
     font-family: var(--font-family);
+    white-space: nowrap;
 }
-.btn-complete {
-    background-color: #2ecc71;
-    color: #fff;
-}
-.btn-complete:hover {
-    background-color: #27ae60;
-}
-.btn-uncomplete {
-    background-color: #f1c40f;
-    color: #000;
-}
-.btn-uncomplete:hover {
-    background-color: #f39c12;
-}
-.btn-delete {
-    background-color: #e74c3c;
-    color: #fff;
-}
-.btn-delete:hover {
-    background-color: #c0392b;
+.btn-complete { background-color: #2ecc71; color: #fff; }
+.btn-complete:hover { background-color: #27ae60; }
+.btn-uncomplete { background-color: #f1c40f; color: #000; }
+.btn-uncomplete:hover { background-color: #f39c12; }
+.btn-delete { background-color: #e74c3c; color: #fff; }
+.btn-delete:hover { background-color: #c0392b; }
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 1.5rem;
+  background-color: var(--card-bg-color);
+  color: var(--text-muted);
+  margin-top: 40px;
 }
 
 
-/* Responsive Layout Media Queries */
+/* ==========================================================================
+   SISTEM RESPONSIVE (MEDIA QUERIES) - KUNCI AGAR TIDAK BERANTAKAN
+   ========================================================================== */
+
+/* A. LAYAR TABLET & HP (Lebar di bawah 768px) */
 @media (max-width: 768px) {
-  .navbar-nav {
-    flex-direction: column;
-    position: absolute;
-    top: 60px;
-    right: 0;
-    background-color: var(--card-bg-color);
-    width: 100%;
-    padding: 1rem 0;
-    display: none; 
+  .page-title {
+    font-size: 2rem; /* Memperkecil judul agar pas di layar sedang */
   }
-  .nav-item {
-    margin: 1rem 0;
-    text-align: center;
-  }
-  /* RESPONSIVE: Mengubah kolom form input menjadi vertikal di layar HP agar tidak sempit */
+  
+  /* Mengubah form input dari 3 kolom menyamping menjadi 1 kolom vertikal ke bawah */
   .task-input-section {
       grid-template-columns: 1fr;
+      gap: 10px;
+  }
+  
+  /* Sembunyikan menu navigasi desktop (bisa dikembangkan dengan hamburger menu via JS) */
+  .navbar-nav {
+    display: none; 
+  }
+}
+
+/* B. LAYAR HP KECIL (Lebar di bawah 576px) - Bagian paling krusial */
+@media (max-width: 576px) {
+  .container {
+      padding: 0 12px; /* Memperkecil padding kontainer agar ruang layar HP maksimal */
+      margin-top: 80px;
+  }
+  
+  .ui-card {
+      padding: 1rem; /* Memperkecil padding kartu di HP */
+  }
+  
+  /* KUNCI UTAMA: Mengubah daftar tugas menjadi vertikal agar teks & tombol tidak tabrakan */
+  .task-item {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 1rem;
+  }
+
+  /* Tombol aksi akan melebar penuh di bagian bawah kartu tugas */
+  .task-item-actions {
+      width: 100%;
+      justify-content: space-between;
+  }
+  
+  .action-btn {
+      flex: 1; /* Tombol Selesai dan Hapus akan membagi ruang sama rata secara rapi */
+      text-align: center;
+      padding: 0.6rem; /* Membuat area sentuh tombol lebih nyaman di HP */
   }
 }
