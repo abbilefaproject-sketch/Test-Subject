@@ -8,36 +8,19 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <style>
-        .hero {
-            text-align: center;
-            padding: 100px 20px;
-            background-image: linear-gradient(to bottom, var(--bg-color), rgba(18,18,18,0.7)), url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1600&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            border-radius: var(--border-radius);
-            margin-bottom: 40px;
-        }
-        .hero-title {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-        }
-        .hero-subtitle {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-    </style>
 </head>
 <body>
 
-    <!-- Navbar -->
     <nav class="navbar">
         <a href="index.html" class="navbar-brand">Abbilefa Project</a>
-        <ul class="navbar-nav">
+        
+        <button class="hamburger" id="hamburger-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <ul class="navbar-nav" id="navbar-menu">
             <li class="nav-item"><a href="index.html" class="nav-link active">Home</a></li>
             <li class="nav-item"><a href="about.html" class="nav-link">About Us</a></li>
             <li class="nav-item"><a href="project.html" class="nav-link">Project</a></li>
@@ -45,24 +28,37 @@
         </ul>
     </nav>
 
-    <!-- Kontainer Beranda -->
     <div class="container">
-        
-        <header class="hero">
-            <h1 class="page-title hero-title">Selamat Datang di Abbilefa Project</h1>
-            <p class="hero-subtitle">Membangun solusi digital inovatif dengan desain modern untuk masa depan yang lebih efisien.</p>
+        <header class="hero" style="text-align: center; padding: 100px 20px; background-image: linear-gradient(to bottom, var(--bg-color), rgba(18,18,18,0.7)), url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1600&auto=format&fit=crop'); background-size: cover; background-position: center; border-radius: var(--border-radius); margin-bottom: 40px;">
+            <h1 class="page-title" style="font-size: 3.5rem; margin-bottom: 1rem;">Selamat Datang di Abbilefa Project</h1>
+            <p style="font-size: 1.2rem; color: var(--text-muted); margin-bottom: 2rem; max-width: 700px; margin-left: auto; margin-right: auto;">Membangun solusi digital inovatif dengan desain modern untuk masa depan yang lebih efisien.</p>
             <a href="project.html" class="btn">Jelajahi Project</a>
         </header>
 
         <section style="text-align: center; margin-bottom: 40px;">
-            <h2 style="color: var(--accent-color);">Inovasi dalam Mengolompokkan Tugas</h2>
+            <h2 style="color: var(--accent-color);">Inovasi dalam Mengelompokkan Tugas</h2>
         </section>
-
     </div>
 
     <footer class="footer">
         &copy; 2026 Abbilefa Project. Otw dipatenkan.
     </footer>
 
+    <script>
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const navbarMenu = document.getElementById('navbar-menu');
+
+        hamburgerBtn.addEventListener('click', () => {
+            navbarMenu.classList.toggle('active');
+            hamburgerBtn.classList.toggle('active');
+        });
+
+        document.addEventListener('click', (event) => {
+            if (!hamburgerBtn.contains(event.target) && !navbarMenu.contains(event.target)) {
+                navbarMenu.classList.remove('active');
+                hamburgerBtn.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html>
