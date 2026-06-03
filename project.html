@@ -120,23 +120,24 @@
     </footer>
 
     <script>
-        /* ==============================================
-           1. LOGIKA HAMBURGER MENU (Navigasi)
-           ============================================== */
-        const hamburgerBtn = document.getElementById('hamburger-btn');
-        const navbarMenu = document.getElementById('navbar-menu');
+/* ==============================================
+   1. LOGIKA HAMBURGER MENU (Navigasi)
+   ============================================== */
+const hamburgerBtn = document.getElementById('hamburger-btn');
+const navbarMenu = document.getElementById('navbar-menu');
 
-        hamburgerBtn.addEventListener('click', () => {
-            navbarMenu.classList.toggle('active');
-        });
+hamburgerBtn.addEventListener('click', () => {
+    navbarMenu.classList.toggle('active');
+    hamburgerBtn.classList.toggle('active'); // <-- INI YANG MEMBUAT ANIMASI X JALAN!
+});
 
-        // Menutup menu jika klik di sembarang tempat (luar menu)
-        document.addEventListener('click', (event) => {
-            if (!hamburgerBtn.contains(event.target) && !navbarMenu.contains(event.target)) {
-                navbarMenu.classList.remove('active');
-            }
-        });
-
+// Menutup menu jika klik di sembarang tempat (luar menu)
+document.addEventListener('click', (event) => {
+    if (!hamburgerBtn.contains(event.target) && !navbarMenu.contains(event.target)) {
+        navbarMenu.classList.remove('active');
+        hamburgerBtn.classList.remove('active'); // <-- Biar tombol balik jadi garis 3 lagi
+    }
+});
         /* ==============================================
            2. LOGIKA APLIKASI TUGAS
            ============================================== */
