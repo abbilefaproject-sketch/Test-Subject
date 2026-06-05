@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abbilefa Project - EDP</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="navbar-brand">Abbilefa Project</a>
+        
+        <button class="hamburger" id="hamburger-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <ul class="navbar-nav" id="navbar-menu">
+            <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="about.html" class="nav-link">About Us</a></li>
+            <li class="nav-item"><a href="project.html" class="nav-link">Project</a></li>
+            <li class="nav-item"><a href="edp.html" class="nav-link active">EDP</a></li>
+            <li class="nav-item"><a href="contact.html" class="nav-link">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <header class="page-header">
+            <h1 class="page-title">EDP</h1>
+            <p class="page-subtitle">EDP</p>
+        </header>
+
+        <div class="ui-card">
+            <div class="canva-embed-container">
+                <iframe loading="lazy" class="canva-iframe"
+                  src=https://www.canva.com/design/DAHIzCdGVUE/SO6cxo1f7Iu590cHGWWJXw/view allowfullscreen="allowfullscreen" allow="fullscreen">
+                </iframe>
+            </div>
+            <a href=https://www.canva.com/design/DAHIzCdGVUE/SO6cxo1f7Iu590cHGWWJXw/view target="_blank" rel="noopener" class="canva-link">Lihat EDP di Canva</a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        &copy; 2026 Abbilefa Project. Otw dipatenkan.
+    </footer>
+
+    <script>
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const navbarMenu = document.getElementById('navbar-menu');
+
+        hamburgerBtn.addEventListener('click', () => {
+            navbarMenu.classList.toggle('active');
+            hamburgerBtn.classList.toggle('active');
+        });
+
+        document.addEventListener('click', (event) => {
+            if (!hamburgerBtn.contains(event.target) && !navbarMenu.contains(event.target)) {
+                navbarMenu.classList.remove('active');
+                hamburgerBtn.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
